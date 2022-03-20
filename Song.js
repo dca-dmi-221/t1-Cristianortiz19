@@ -14,4 +14,19 @@ class Song{
         this._duration = duration;
         this._soundFile = soundFile;
     }
+    get name(){
+        return this._name;
+    }
+    get artist(){
+        return this._artist;
+    }
+    get genre(){
+        return this._genre;
+    }
+    get date(){
+        return this._date;
+    }
+    get duration(){
+        return this._duration;
+    }
 }
