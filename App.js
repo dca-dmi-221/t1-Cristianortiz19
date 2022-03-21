@@ -1,9 +1,9 @@
 class App{
     constructor(){
-        this._songs 
+        this.songs 
         this.loadSongs();
     }
     loadSongs(){
-        this._songs = loadSound('/Songs/Slowdive - When the sun hits.mp3');
+        this.songs = loadSound('/Songs/Slowdive - When the sun hits.mp3');
     }
 }
