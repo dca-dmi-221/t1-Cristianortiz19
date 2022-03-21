@@ -5,5 +5,14 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+}
+
+function mousePressed(){
+  if(player.songs.isPlaying()){
+    player.songs.stop();
+    background(255, 0, 0);
+  } else {
+    player.songs.play();
+    background(0, 255, 0);
+  }
 }
