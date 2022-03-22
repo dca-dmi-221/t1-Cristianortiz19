@@ -9,6 +9,7 @@ function draw() {
 }
 
 function mousePressed(){
+  player.isPressed(mouseX, mouseY);
   /*for (let index = 0; index < player.songs.length; index++) {
     const song = player.songs[index];
     if(song.isPlaying()){
