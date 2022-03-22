@@ -5,10 +5,11 @@ function setup() {
 }
 
 function draw() {
+  player.interface();
 }
 
 function mousePressed(){
-  for (let index = 0; index < player.songs.length; index++) {
+  /*for (let index = 0; index < player.songs.length; index++) {
     const song = player.songs[index];
     if(song.isPlaying()){
       song.stop();
@@ -17,5 +18,5 @@ function mousePressed(){
       song.play();
       background(0, 255, 0);
     }
-  }
+  }*/
 }
