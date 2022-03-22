@@ -1,7 +1,7 @@
 class Song{
     constructor({
         name,
-        artist,
+        artist = "Unknown",
         genre,
         date,
         duration,

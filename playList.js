@@ -1,5 +1,6 @@
 class PlayList{
-    constructor(){
-        
+    constructor({name = 'Unknown'}){
+        this._sounds = [];
+        this._name = name
     }
 }
