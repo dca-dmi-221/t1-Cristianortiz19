@@ -2,18 +2,24 @@ class App{
     constructor(){
         this._songsFiles = [];
         this._songs = [];
-        this.loadSongs();
+        this.loadFileSongs();
+        this.songs();
         this._interface = new Interface();
         this._screen = 2;
         this._playLists = [];
     }
-    loadSongs(){
+    loadFileSongs(){
         this._songsFiles[0] = loadSound('/Songs/Slowdive - When the sun hits.mp3');
         this._songsFiles[1] = loadSound('/Songs/Surf Curse - Freaks.mp3')
     }
-    playLists(){
+    songs(){
         this._songs.push(new Song({
-            
+            name: 'When the sun hits',
+            artist: 'Slowdive',
+            genre: 'Alternative',
+            date: '1993',
+            duration: '285',
+            soundFile: this._songsFiles[0]
         }))
     }
     interface(){
