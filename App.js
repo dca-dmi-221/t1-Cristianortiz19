@@ -10,7 +10,9 @@ class App{
     }
     loadFileSongs(){
         this._songsFiles[0] = loadSound('/Songs/Slowdive - When the sun hits.mp3');
-        this._songsFiles[1] = loadSound('/Songs/Surf Curse - Freaks.mp3')
+        this._songsFiles[1] = loadSound('/Songs/Surf Curse - Freaks.mp3');
+        this._songsFiles[2] = loadSound('/Songs/The Drums - Money.mp3');
+        this._songsFiles[3] = loadSound('/Songs/Fahrradsattel.mp3');
     }
     songs(){
         this._songs.push(new Song({
@@ -20,7 +22,15 @@ class App{
             date: '1993',
             duration: '285',
             soundFile: this._songsFiles[0]
-        }))
+        }));
+        this._songs.push(new Song({
+            name: 'Freaks',
+            artist: 'Surf Curse',
+            genre: 'Alternative',
+            date: '2013',
+            duration: '147',
+            soundFile: this._songsFiles[1]
+        }));
     }
     interface(){
         switch (this._screen) {
