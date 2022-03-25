@@ -1,5 +1,6 @@
 class Interface{
     constructor(){
+        this._Backgrounds = [];
     }
     welcome(){
         background(240);
@@ -8,7 +9,8 @@ class Interface{
         rect(529, 469, 222, 52);
     }
     homepage(){
-        background(240);
+        this._Backgrounds[1] = loadImage('/Images/Homepage.jpg');
+        Image(this._Backgrounds[1]);
     }
     playing(){
 

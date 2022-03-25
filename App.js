@@ -13,6 +13,7 @@ class App{
         this._songsFiles[1] = loadSound('/Songs/Surf Curse - Freaks.mp3');
         this._songsFiles[2] = loadSound('/Songs/The Drums - Money.mp3');
         this._songsFiles[3] = loadSound('/Songs/Fahrradsattel.mp3');
+        
     }
     songs(){
         this._songs.push(new Song({
@@ -30,6 +31,22 @@ class App{
             date: '2013',
             duration: '147',
             soundFile: this._songsFiles[1]
+        }));
+        this._songs.push(new Song({
+            name: 'Money',
+            artist: 'The Drums',
+            genre: 'Rock',
+            date: '2011',
+            duration: '236',
+            soundFile: this._songsFiles[2]
+        }));
+        this._songs.push(new Song({
+            name: 'Fahrradsattel',
+            artist: 'Pissel',
+            genre: 'Rock',
+            date: '2021',
+            duration: '110',
+            soundFile: this._songsFiles[3]
         }));
     }
     interface(){
