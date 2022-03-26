@@ -17,11 +17,11 @@ class Interface{
         for (let index = 0; index < 4; index++) {
             const song = songArray[index];
             textSize(20);
-            text(song.name, 95, 320);
+            text(song.name, 95 + index * 220, 320);
             textSize(16);
-            text(song.artist, 95, 340);
+            text(song.artist, 95 + index * 220, 340);
             textSize(14);
-            text(song.genre, 95, 380);
+            text(song.genre, 95 + index * 220, 380);
         }
     }
     playing(){
