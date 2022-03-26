@@ -67,6 +67,16 @@ class App{
                 break;
         }
     }
+    playing(){
+        if(this._playingSong !== null){
+            if(this._playingSong.soundFile.isPlaying()){
+                this._playingSong.soundFile.pause();
+            } else {
+                this._playingSong.soundFile.play();
+            }
+            return false;
+        }
+    }
     isPressed(mx, my, song){
         switch (this._screen) {
             case 0:
@@ -82,7 +92,8 @@ class App{
                     let yItem = 360;
                     let sizeItem = 40;
                     if(dist(mx, my, xItem, yItem)<sizeItem/2){
-                        song[index].soundFile.play();
+                        this._playingSong = song[index];
+                        console.log(this._playingSong);
                     }
                 }
                 break;
@@ -90,6 +101,7 @@ class App{
 
                 break;
         }
+        this.playing();
     }
     isDragged(){
 

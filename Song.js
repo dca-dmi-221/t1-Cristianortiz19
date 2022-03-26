@@ -29,4 +29,7 @@ class Song{
     get duration(){
         return this._duration;
     }
+    get soundFile(){
+        return this._soundFile;
+    }
 }
