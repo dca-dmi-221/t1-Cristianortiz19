@@ -20,16 +20,16 @@ class Interface{
             // Info canciones
             fill(0);
             textSize(20);
-            text(song.name, 95 + index * 220, 320);
+            text(song.name, 70 + index * 220, 320);
             textSize(16);
-            text(song.artist, 95 + index * 220, 340);
+            text(song.artist, 70 + index * 220, 340);
             textSize(14);
-            text(song.genre, 95 + index * 220, 380);
+            text(song.genre, 70 + index * 220, 380);
 
             //Boton reproducir canciones
             noStroke();
             fill(150);
-            circle(246, 360, 40);
+            circle(220 + index * 220, 360, 40);
         }
     }
     playing(){

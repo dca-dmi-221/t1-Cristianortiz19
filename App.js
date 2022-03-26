@@ -7,6 +7,7 @@ class App{
         this._screen = 1;
         this._playLists = [];
         this.songDates();
+        this._playingSong = null;
     }
     loadFileSongs(){
         this._songsFiles[0] = loadSound('/Songs/Slowdive - When the sun hits.mp3');
@@ -66,7 +67,7 @@ class App{
                 break;
         }
     }
-    isPressed(mx, my){
+    isPressed(mx, my, song){
         switch (this._screen) {
             case 0:
                 if(mx > 529 && mx <529 + 222
@@ -76,6 +77,14 @@ class App{
                     }
                 break;
             case 1:
+                for (let index = 0; index < 4; index++) {
+                    let xItem = 220 + (index * 220);
+                    let yItem = 360;
+                    let sizeItem = 40;
+                    if(dist(mx, my, xItem, yItem)<sizeItem/2){
+                        song[index].soundFile.play();
+                    }
+                }
                 break;
             case 2:
 
@@ -87,5 +96,11 @@ class App{
     }
     isReleased(){
 
+    }
+    get songsFiles(){
+        return this._songsFiles;
+    }
+    get songs(){
+        return this._songs;
     }
 }
