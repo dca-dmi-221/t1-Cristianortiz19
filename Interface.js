@@ -16,12 +16,20 @@ class Interface{
         image(this._Backgrounds[1], 0, 0);
         for (let index = 0; index < 4; index++) {
             const song = songArray[index];
+
+            // Info canciones
+            fill(0);
             textSize(20);
             text(song.name, 95 + index * 220, 320);
             textSize(16);
             text(song.artist, 95 + index * 220, 340);
             textSize(14);
             text(song.genre, 95 + index * 220, 380);
+
+            //Boton reproducir canciones
+            noStroke();
+            fill(150);
+            circle(246, 360, 40);
         }
     }
     playing(){
