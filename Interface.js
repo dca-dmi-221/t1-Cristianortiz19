@@ -1,6 +1,10 @@
 class Interface{
     constructor(){
         this._Backgrounds = [];
+        this.preloadImages();
+    }
+    preloadImages(){
+        this._Backgrounds[1] = loadImage('/Images/Homepage.jpg');
     }
     welcome(){
         background(240);
@@ -8,9 +12,14 @@ class Interface{
         fill(150);
         rect(529, 469, 222, 52);
     }
-    homepage(){
-        this._Backgrounds[1] = loadImage('/Images/Homepage.jpg');
-        Image(this._Backgrounds[1]);
+    homepage(song){
+        image(this._Backgrounds[1], 0, 0);
+        textSize(20);
+        text(song.name, 95, 320);
+        textSize(16);
+        text(song.artist, 95, 340);
+        textSize(14);
+        text(song.genre, 95, 380);
     }
     playing(){
 

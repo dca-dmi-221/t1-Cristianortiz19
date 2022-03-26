@@ -3,10 +3,10 @@ class App{
         this._songsFiles = [];
         this._songs = [];
         this.loadFileSongs();
-        this.songs();
         this._interface = new Interface();
-        this._screen = 2;
+        this._screen = 1;
         this._playLists = [];
+        this.songDates();
     }
     loadFileSongs(){
         this._songsFiles[0] = loadSound('/Songs/Slowdive - When the sun hits.mp3');
@@ -15,7 +15,7 @@ class App{
         this._songsFiles[3] = loadSound('/Songs/Fahrradsattel.mp3');
         
     }
-    songs(){
+    songDates(){
         this._songs.push(new Song({
             name: 'When the sun hits',
             artist: 'Slowdive',
@@ -55,7 +55,7 @@ class App{
                 this._interface.welcome();
                 break;
             case 1:
-                this._interface.homepage();
+                this._interface.homepage(this._songs[0]);
                 break;
             case 2:
                 this._interface.playingSong();
@@ -87,8 +87,5 @@ class App{
     }
     isReleased(){
 
-    }
-    get songs(){
-        return this._songs;
     }
 }
