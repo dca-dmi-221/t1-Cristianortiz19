@@ -12,14 +12,17 @@ class Interface{
         fill(150);
         rect(529, 469, 222, 52);
     }
-    homepage(song){
+    homepage(songArray){
         image(this._Backgrounds[1], 0, 0);
-        textSize(20);
-        text(song.name, 95, 320);
-        textSize(16);
-        text(song.artist, 95, 340);
-        textSize(14);
-        text(song.genre, 95, 380);
+        for (let index = 0; index < 4; index++) {
+            const song = songArray[index];
+            textSize(20);
+            text(song.name, 95, 320);
+            textSize(16);
+            text(song.artist, 95, 340);
+            textSize(14);
+            text(song.genre, 95, 380);
+        }
     }
     playing(){
 

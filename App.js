@@ -55,7 +55,7 @@ class App{
                 this._interface.welcome();
                 break;
             case 1:
-                this._interface.homepage(this._songs[0]);
+                this._interface.homepage(this._songs);
                 break;
             case 2:
                 this._interface.playingSong();
