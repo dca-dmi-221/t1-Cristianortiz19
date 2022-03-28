@@ -4,7 +4,7 @@ class App{
         this._songs = [];
         this.loadFileSongs();
         this._interface = new Interface();
-        this._screen = 1;
+        this._screen = 0;
         this._playLists = [];
         this.songDates();
         this._playingSong = null;
