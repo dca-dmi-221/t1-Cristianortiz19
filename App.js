@@ -4,7 +4,7 @@ class App{
         this._songs = [];
         this.loadFileSongs();
         this._interface = new Interface();
-        this._screen = 1;
+        this._screen = 0;
         this._playLists = [];
         this.songDates();
         this._playingSong = null;
@@ -59,11 +59,13 @@ class App{
                 this._interface.homepage(this._songs);
                 break;
             case 2:
-                this._interface.playingSong();
+                background(0);
                 break;
             case 3:
+                background(0);
                 break;
             case 4:
+                this._interface.playingSong();
                 break;
         }
     }
@@ -95,6 +97,14 @@ class App{
                         this._playingSong = song[index];
                         console.log(this._playingSong);
                     }
+                }
+                if(mx > 845 && mx <845 + 80
+                    && my > 135 && my <135 + 25){
+                    this._screen = 2;
+                }
+                if(mx > 845 && mx <845 + 80
+                    && my > 445 && my <445 + 25){
+                    this._screen = 3;
                 }
                 break;
             case 2:

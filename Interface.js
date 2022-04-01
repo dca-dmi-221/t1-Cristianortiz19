@@ -23,6 +23,7 @@ class Interface{
             text(song.name, 70 + index * 220, 320);
             textSize(16);
             text(song.artist, 70 + index * 220, 340);
+            fill(80);
             textSize(14);
             text(song.genre, 70 + index * 220, 380);
 
