@@ -77,13 +77,13 @@ class App{
                 this._interface.homepage(this._songs);
                 break;
             case 2:
-                background(0);
+                this._interface.allSongs();
                 break;
             case 3:
                 background(0);
                 break;
             case 4:
-                this._interface.playingSong();
+                this._interface.playingSong(this._song);
                 break;
         }
     }
