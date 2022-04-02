@@ -14,7 +14,7 @@ class Interface{
     }
     homepage(songArray){
         image(this._Backgrounds[1], 0, 0);
-        for (let index = 0; index < 4; index++) {
+        for (let index = 0; index <4; index++) {
             const song = songArray[index];
 
             // Info canciones

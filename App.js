@@ -14,7 +14,9 @@ class App{
         this._songsFiles[1] = loadSound('/Songs/Surf Curse - Freaks.mp3');
         this._songsFiles[2] = loadSound('/Songs/The Drums - Money.mp3');
         this._songsFiles[3] = loadSound('/Songs/Fahrradsattel.mp3');
-        
+        this._songsFiles[4] = loadSound('/Songs/Pantysito.mp3');
+        this._songsFiles[5] = loadSound('/Songs/I Think I Like It.mp3');
+        this._songsFiles[6] = loadSound('/Songs/Lady.mp3');
     }
     songDates(){
         this._songs.push(new Song({
@@ -49,6 +51,22 @@ class App{
             duration: '110',
             soundFile: this._songsFiles[3]
         }));
+        this._songs.push(new Song({
+            name: 'Pantysito',
+            artist: 'Feid, Alejo & Robi',
+            genre: 'Reggaeton',
+            date: '2022',
+            duration: '110',
+            soundFile: this._songsFiles[4]
+        }));
+        this._songs.push(new Song({
+            name: 'Fahrradsattel',
+            artist: 'Pissel',
+            genre: 'Rock',
+            date: '2021',
+            duration: '110',
+            soundFile: this._songsFiles[5]
+        }));
     }
     interface(){
         switch (this._screen) {
@@ -69,7 +87,7 @@ class App{
                 break;
         }
     }
-    playing(){
+    /*playing(){
         if(this._playingSong !== null){
             if(this._playingSong.soundFile.isPlaying()){
                 this._playingSong.soundFile.pause();
@@ -78,7 +96,7 @@ class App{
             }
             return false;
         }
-    }
+    }*/
     isPressed(mx, my, song){
         switch (this._screen) {
             case 0:
@@ -93,11 +111,14 @@ class App{
                     let xItem = 220 + (index * 220);
                     let yItem = 360;
                     let sizeItem = 40;
-                    if(dist(mx, my, xItem, yItem)<sizeItem/2){
+                    if(dist(mx, my, xItem, yItem)<sizeItem/2 && this._playingSong === null){
                         this._playingSong = song[index];
-                        console.log(this._playingSong);
+                        song[index].soundFile.play();
+                        this._screen = 4;
                     }
+                    
                 }
+                console.log(this._playingSong);
                 if(mx > 845 && mx <845 + 80
                     && my > 135 && my <135 + 25){
                     this._screen = 2;
@@ -111,7 +132,6 @@ class App{
 
                 break;
         }
-        this.playing();
     }
     isDragged(){
 
