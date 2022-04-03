@@ -4,10 +4,11 @@ class App{
         this._songs = [];
         this.loadFileSongs();
         this._interface = new Interface();
-        this._screen = 0;
+        this._screen = 1;
         this._playLists = [];
         this.songDates();
         this._playingSong = null;
+        this.createPlayLists();
     }
     loadFileSongs(){
         this._songsFiles[0] = loadSound('/Songs/Slowdive - When the sun hits.mp3');
@@ -148,13 +149,38 @@ class App{
             soundFile: this._songsFiles[14]
         }));
     }
+    createPlayLists(){
+        this._playLists.push(new PlayList({name: 'Independent Music'}));
+        this._playLists[0].sounds.push(this._songs[1]);
+        this._playLists[0].sounds.push(this._songs[2]);
+        this._playLists[0].sounds.push(this._songs[3]);
+        this._playLists[0].sounds.push(this._songs[12]);
+        this._playLists[0].sounds.push(this._songs[14]);
+
+        this._playLists.push(new PlayList({name: 'Spanish Music'}));
+        this._playLists[1].sounds.push(this._songs[4]);
+        this._playLists[1].sounds.push(this._songs[8]);
+        this._playLists[1].sounds.push(this._songs[9]);
+        this._playLists[1].sounds.push(this._songs[10]);
+
+        this._playLists.push(new PlayList({name: 'Best of Indie 2022'}));
+        this._playLists[2].sounds.push(this._songs[0]);
+        this._playLists[2].sounds.push(this._songs[5]);
+        this._playLists[2].sounds.push(this._songs[6]);
+        this._playLists[2].sounds.push(this._songs[7]);
+        this._playLists[2].sounds.push(this._songs[13]);
+        this._playLists[2].sounds.push(this._songs[11]);
+
+        console.log(this._playLists);
+        
+    }
     interface(){
         switch (this._screen) {
             case 0:
                 this._interface.welcome();
                 break;
             case 1:
-                this._interface.homepage(this._songs);
+                this._interface.homepage(this._songs, this._playLists);
                 break;
             case 2:
                 this._interface.allSongs(this._songs);
@@ -229,7 +255,10 @@ class App{
 
                 break;
             case 4:
-
+                if(mx > 50 && mx < 50 + 50 &&
+                    my > 40 && my < 40 + 40){
+                        this._screen = 1;
+                    }
                 break;
         }
     }
