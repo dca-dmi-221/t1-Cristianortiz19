@@ -4,7 +4,7 @@ class App{
         this._songs = [];
         this.loadFileSongs();
         this._interface = new Interface();
-        this._screen = 2;
+        this._screen = 0;
         this._playLists = [];
         this.songDates();
         this._playingSong = null;
@@ -163,7 +163,7 @@ class App{
                 background(0);
                 break;
             case 4:
-                this._interface.playingSong(this._song);
+                this._interface.playingSong(this._playingSong);
                 break;
         }
     }
@@ -180,16 +180,19 @@ class App{
     isPressed(mx, my, song){
         switch (this._screen) {
             case 0:
-                this._interface.welcomeButtons(mx, my, this._screen);
+                if(mx > 529 && mx <529 + 222
+                    && my > 469 && my <469 + 52){
+                        this._screen = 1;
+                    }
                 break;
             case 1:
                 for (let index = 0; index < 4; index++) {
                     let xItem = 220 + (index * 220);
                     let yItem = 360;
                     let sizeItem = 40;
-                    if(dist(mx, my, xItem, yItem)<sizeItem/2 && this._playingSong === null){
+                    if(dist(mx, my, xItem, yItem)<sizeItem/2){
                         this._playingSong = song[index];
-                        song[index].soundFile.play();
+                        song[index].playSong();
                         this._screen = 4;
                     }
                     
@@ -205,6 +208,27 @@ class App{
                 }
                 break;
             case 2:
+                let x = 50;
+                let y = 120;
+                for (let index = 0; index < song.length; index++) {
+                    const songs = song[index];
+                    if(dist(mx, my, x + 242, y + 14) < 35){
+                        songs.playSong();
+                        this._playingSong = songs;
+                        this._screen = 4;
+                    }
+                    x += 303;
+                    if(x > 800){
+                        x = 50;
+                        y += 85;
+                    }
+                }
+                console.log(this._playingSong);
+                break;
+            case 3:
+
+                break;
+            case 4:
 
                 break;
         }
