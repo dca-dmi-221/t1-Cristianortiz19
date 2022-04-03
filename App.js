@@ -4,7 +4,7 @@ class App{
         this._songs = [];
         this.loadFileSongs();
         this._interface = new Interface();
-        this._screen = 0;
+        this._screen = 2;
         this._playLists = [];
         this.songDates();
         this._playingSong = null;
@@ -22,7 +22,7 @@ class App{
         this._songsFiles[9] = loadSound('/Songs/Jugaste y Sufri.mp3');
         this._songsFiles[10] = loadSound('/Songs/METALLICA.mp3');
         this._songsFiles[11] = loadSound('/Songs/Softcore.mp3');
-        this._songsFiles[12] = loadSound('/Sudno.mp3');
+        this._songsFiles[12] = loadSound('/Songs/Sudno.mp3');
         this._songsFiles[13] = loadSound('/Songs/The Less I Know The Better.mp3');
         this._songsFiles[14] = loadSound('/Songs/High Enough.mp3');
     }
@@ -157,7 +157,7 @@ class App{
                 this._interface.homepage(this._songs);
                 break;
             case 2:
-                this._interface.allSongs();
+                this._interface.allSongs(this._songs);
                 break;
             case 3:
                 background(0);
@@ -180,11 +180,7 @@ class App{
     isPressed(mx, my, song){
         switch (this._screen) {
             case 0:
-                if(mx > 529 && mx <529 + 222
-                    && my > 469 && my <469 + 52){
-                        this._screen = 1;
-                        console.log("aaaa");
-                    }
+                this._interface.welcomeButtons(mx, my, this._screen);
                 break;
             case 1:
                 for (let index = 0; index < 4; index++) {

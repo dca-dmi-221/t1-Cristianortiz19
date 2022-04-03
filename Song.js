@@ -13,6 +13,25 @@ class Song{
         this._date = date;
         this._duration = duration;
         this._soundFile = soundFile;
+        this._isPlaying = false;
+    }
+    playSong(){
+        this._soundFile.play();
+    }
+    stopSong(){
+        if(this._soundFile._isPlaying()){
+            this._soundFile.stop();
+        }
+    }
+    pauseSong(){
+        if(this._soundFile._isPlaying()){
+            this._soundFile.pause();
+        }
+    }
+    resumeSong(){
+        if(this.soundFile.isPaused()){
+            this.playSong();
+        }
     }
     get name(){
         return this._name;
