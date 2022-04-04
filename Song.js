@@ -17,19 +17,18 @@ class Song{
     }
     playSong(){
         this._soundFile.play();
+        this._isPlaying = true;
     }
     stopSong(){
-        if(this._soundFile._isPlaying()){
+        if(this._soundFile.isPlaying()){
             this._soundFile.stop();
         }
+        this._isPlaying = false;
     }
     pauseSong(){
-        if(this._soundFile._isPlaying()){
+        if(this._soundFile.isPlaying()){
             this._soundFile.pause();
-        }
-    }
-    resumeSong(){
-        if(this.soundFile.isPaused()){
+        }else{
             this.playSong();
         }
     }
@@ -50,5 +49,8 @@ class Song{
     }
     get soundFile(){
         return this._soundFile;
+    }
+    get isPlaying(){
+        return this._isPlaying;
     }
 }

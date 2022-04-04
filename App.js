@@ -4,7 +4,7 @@ class App{
         this._songs = [];
         this.loadFileSongs();
         this._interface = new Interface();
-        this._screen = 1;
+        this._screen = 0;
         this._playLists = [];
         this.songDates();
         this._playingSong = null;
@@ -186,7 +186,7 @@ class App{
                 this._interface.allSongs(this._songs);
                 break;
             case 3:
-                background(0);
+                this._interface.allPlaylists();
                 break;
             case 4:
                 this._interface.playingSong(this._playingSong);
@@ -207,21 +207,24 @@ class App{
         switch (this._screen) {
             case 0:
                 if(mx > 529 && mx <529 + 222
-                    && my > 469 && my <469 + 52){
+                    && my > 540 && my <540 + 52){
                         this._screen = 1;
                     }
                 break;
             case 1:
-                for (let index = 0; index < 4; index++) {
-                    let xItem = 220 + (index * 220);
-                    let yItem = 360;
-                    let sizeItem = 40;
-                    if(dist(mx, my, xItem, yItem)<sizeItem/2){
-                        this._playingSong = song[index];
-                        song[index].playSong();
-                        this._screen = 4;
+                for (let index = 0; index < song.length; index++) {
+                    const songs = song[index];
+                    if(index < 4){
+                        let xItem = 220 + (index * 220);
+                        let yItem = 360;
+                        let sizeItem = 40;
+                        if(dist(mx, my, xItem, yItem)<sizeItem/2){
+                            songs.stopSong();
+                            song[index].playSong();
+                            this._playingSong = song[index];
+                            this._screen = 4;
+                        }
                     }
-                    
                 }
                 console.log(this._playingSong);
                 if(mx > 845 && mx <845 + 80
@@ -249,16 +252,57 @@ class App{
                         y += 85;
                     }
                 }
-                console.log(this._playingSong);
+                //Volver
+                if(mx > 30 && mx < 30 + 40 &&
+                    my > 40 && my < 40 + 30){
+                        this._screen = 1;
+                    }
                 break;
             case 3:
-
+                //Volver
+                if(mx > 30 && mx < 30 + 40 &&
+                    my > 40 && my < 40 + 30){
+                        this._screen = 1;
+                    }
                 break;
             case 4:
+                // Volver
                 if(mx > 50 && mx < 50 + 50 &&
                     my > 40 && my < 40 + 40){
                         this._screen = 1;
                     }
+                for (let index = 0; index < song.length; index++) {
+                    const songs = song[index];
+                    if(dist(mx, my, 640, 590) < 55/2 && songs.isPlaying === true){
+                        songs.pauseSong();
+                    }
+                    //Canción anterior
+                    if(mx > 688 && mx < 688 + 45 &&
+                        my > 580 && my < 580 + 22){
+                            
+                        //Siguiente canción
+                        if(songs.soundFile.isPlaying()){
+                            if(index <= song.length){
+                                song[index].stopSong();
+                                index += 1;
+                                song[index].playSong();
+                                this._playingSong = song[index];
+                            }
+                        }
+                    }
+                    //Canción posterior
+                    if(mx > 550 && mx < 550 + 45 &&
+                        my > 580 && my < 580 + 22){
+                        if(songs.soundFile.isPlaying()){
+                            if(index > 0){
+                                song[index].stopSong();
+                                index -= 1;
+                                song[index].playSong();
+                                this._playingSong = song[index];
+                            }
+                    }
+                        }
+                }
                 break;
         }
     }

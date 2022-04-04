@@ -4,15 +4,14 @@ class Interface{
         this.preloadImages();
     }
     preloadImages(){
+        this._Backgrounds[0] = loadImage('/Images/Welcome.jpg');
         this._Backgrounds[1] = loadImage('/Images/Homepage.jpg');
         this._Backgrounds[2] = loadImage('/Images/AllSongs.jpg');
+        this._Backgrounds[3] = loadImage('/Images/AllPlaylists.jpg');
         this._Backgrounds[4] = loadImage('/Images/IsPlaying.jpg');
     }
     welcome(){
-        background(240);
-        noStroke();
-        fill(150);
-        rect(529, 469, 222, 52);
+        image(this._Backgrounds[0], 0, 0);
     }
     homepage(songArray, playListArray){
         image(this._Backgrounds[1], 0, 0);
@@ -60,6 +59,9 @@ class Interface{
             textSize(16);
             fill(0);
             text(song.name, x, y);
+            fill(60);
+            textSize(14)
+            text(song.artist, x, y + 16);
             noStroke();
             fill(100);
             circle(x + 242, y + 14, 35);
@@ -70,6 +72,9 @@ class Interface{
             }
         }
     }
+    allPlaylists(){
+        image(this._Backgrounds[3], 0, 0);
+    }
     playingSong(song){
         image(this._Backgrounds[4], 0, 0);
 
@@ -78,6 +83,10 @@ class Interface{
         textAlign(CENTER);
         textSize(40);
         text(song.name, 640,500);
+
+        textSize(20);
+        fill(80);
+        text(song.artist, 640, 530);
 
         fill(0, 80);
         rect(70, 50, 40, 30);
