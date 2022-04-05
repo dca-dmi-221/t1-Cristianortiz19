@@ -4,7 +4,7 @@ class App{
         this._songs = [];
         this.loadFileSongs();
         this._interface = new Interface();
-        this._screen = 0;
+        this._screen = 1;
         this._playLists = [];
         this.songDates();
         this._playingSong = null;
@@ -192,6 +192,7 @@ class App{
                 this._interface.playingSong(this._playingSong);
                 break;
         }
+        this._interface.songWindow(this._playingSong, this._screen);
     }
     /*playing(){
         if(this._playingSong !== null){
@@ -219,7 +220,9 @@ class App{
                         let yItem = 360;
                         let sizeItem = 40;
                         if(dist(mx, my, xItem, yItem)<sizeItem/2){
-                            songs.stopSong();
+                            if(songs.soundFile.isPlaying()){
+                                songs.stopSong();
+                            }
                             song[index].playSong();
                             this._playingSong = song[index];
                             this._screen = 4;

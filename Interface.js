@@ -21,12 +21,12 @@ class Interface{
             if(index <= 3){
                 // Info canciones
                 textAlign(LEFT);
-                fill(0);
+                fill(255);
                 textSize(20);
                 text(song.name, 70 + index * 220, 320);
                 textSize(16);
                 text(song.artist, 70 + index * 220, 340);
-                fill(80);
+                fill(255);
                 textSize(14);
                 text(song.genre, 70 + index * 220, 380);
 
@@ -40,7 +40,7 @@ class Interface{
             const playList = playListArray[index];
             //info playlists
             textAlign(LEFT);
-            fill(0);
+            fill(255);
             textSize(20);
             text(playList.name, 70 + index * 220, 630);
         }
@@ -57,9 +57,9 @@ class Interface{
             const song = songArray[index];
             textAlign(LEFT);
             textSize(16);
-            fill(0);
+            fill(255);
             text(song.name, x, y);
-            fill(60);
+            fill(255);
             textSize(14)
             text(song.artist, x, y + 16);
             noStroke();
@@ -90,5 +90,10 @@ class Interface{
 
         fill(0, 80);
         rect(70, 50, 40, 30);
+    }
+    songWindow(playingSong, screen){
+        if(playingSong !== null && screen !== 0 && screen !== 4){
+            rect(500,500, 200, 200);
+        }
     }
 }
