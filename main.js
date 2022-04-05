@@ -11,3 +11,6 @@ function draw() {
 function mousePressed(){
   player.isPressed(mouseX, mouseY, player.songs);
 }
+function mouseDragged(){
+  player.isDragged(mouseX, mouseY, player.songs);
+}

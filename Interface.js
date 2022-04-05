@@ -93,7 +93,11 @@ class Interface{
     }
     songWindow(playingSong, screen){
         if(playingSong !== null && screen !== 0 && screen !== 4){
-            rect(500,500, 200, 200);
+            rect(980,300, 282, 330);
+            fill(0);
+            textAlign(LEFT);
+            textSize(20);
+            text(playingSong.name, 995,560);
         }
     }
 }

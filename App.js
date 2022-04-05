@@ -9,6 +9,8 @@ class App{
         this.songDates();
         this._playingSong = null;
         this.createPlayLists();
+        this._volumeSlider = 990;
+        this._loadingSlider = 280;
     }
     loadFileSongs(){
         this._songsFiles[0] = loadSound('/Songs/Slowdive - When the sun hits.mp3');
@@ -190,6 +192,16 @@ class App{
                 break;
             case 4:
                 this._interface.playingSong(this._playingSong);
+                fill(255)
+                circle(this._volumeSlider, 590, 10);
+                for (let index = 0; index < this._songs.length; index++) {
+                    const song = this._songs[index];
+                    if(song.isPlaying === true){
+                        
+                        console.log(map(mouseX, 0, this._songs[index].soundFile.duration(),280 ,990))
+                    }
+                    circle(this._loadingSlider, 633, 10);
+                }
                 break;
         }
         this._interface.songWindow(this._playingSong, this._screen);
@@ -309,8 +321,37 @@ class App{
                 break;
         }
     }
-    isDragged(){
-
+    isDragged(mx, my, song){
+        switch (this._screen) {
+            case 4:
+                if(dist(mx, my, this._volumeSlider, 590)<20){
+                    if(mx > 870 && mx < 990){
+                        this._volumeSlider = mx
+                        for (let index = 0; index < song.length; index++) {
+                            const songs = song[index];
+                            const volume = map(mx, 870, 990, 0,100) / 100;
+                            songs.soundFile.setVolume(volume);
+                                
+                        }
+                    }
+                }
+                if(dist(mx, my, this._loadingSlider, 633)<20){
+                    if(mx > 280 && mx < 990){
+                        this._loadingSlider = mx
+                        for (let index = 0; index < song.length; index++) {
+                            const songs = song[index];
+                            if(songs.isPlaying === true){
+                                const head = map(mouseX, 280,990, 0, song[index].soundFile.duration());
+                                song[index].soundFile.jump(head);
+                            } 
+                        }
+                    }
+                }
+                break;
+        
+            default:
+                break;
+        }
     }
     isReleased(){
 
