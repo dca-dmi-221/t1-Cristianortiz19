@@ -1,6 +1,9 @@
 class Interface{
     constructor(){
         this._Backgrounds = [];
+        this._boxes = [];
+        this._buttons = [];
+        this._songImages = [];
         this.preloadImages();
     }
     preloadImages(){
@@ -9,6 +12,10 @@ class Interface{
         this._Backgrounds[2] = loadImage('/Images/AllSongs.jpg');
         this._Backgrounds[3] = loadImage('/Images/AllPlaylists.jpg');
         this._Backgrounds[4] = loadImage('/Images/IsPlaying.jpg');
+        this._boxes[0] = loadImage('/Images/SongFrame.png');
+        this._boxes[1] = loadImage('/Images/PlayListFrame.png');
+        this._boxes[10] = loadImage('/Images/windowSong.jpg');
+        this._buttons[0] = loadImage('/Images/PlayButton.png')
     }
     welcome(){
         image(this._Backgrounds[0], 0, 0);
@@ -19,12 +26,13 @@ class Interface{
             const song = songArray[index];
 
             if(index <= 3){
+                image(this._boxes[0], -155 + index * 220, -10);
                 // Info canciones
                 textAlign(LEFT);
                 fill(255);
-                textSize(20);
+                textSize(18);
                 text(song.name, 70 + index * 220, 320);
-                textSize(16);
+                textSize(14);
                 text(song.artist, 70 + index * 220, 340);
                 fill(255);
                 textSize(14);
@@ -33,16 +41,19 @@ class Interface{
                 //Boton reproducir canciones
                 noStroke();
                 fill(150);
-                circle(220 + index * 220, 360, 40); 
+                image(this._buttons[0], 200 + index * 220, 340)
             }
         }
         for (let index = 0; index < playListArray.length; index++) {
             const playList = playListArray[index];
-            //info playlists
-            textAlign(LEFT);
-            fill(255);
-            textSize(20);
-            text(playList.name, 70 + index * 220, 630);
+            if(index <= 3){
+                image(this._boxes[1], -33 + index * 220, 405);
+                //info playlists
+                textAlign(LEFT);
+                fill(255);
+                textSize(18);
+                text(playList.name, 70 + index * 220, 630);
+            }
         }
     }
     playing(){
@@ -90,14 +101,18 @@ class Interface{
 
         fill(0, 80);
         rect(70, 50, 40, 30);
+        image(song.imageFile, 454, 53);
     }
     songWindow(playingSong, screen){
         if(playingSong !== null && screen !== 0 && screen !== 4){
-            rect(980,300, 282, 330);
-            fill(0);
+            image(this._boxes[10], 978, 295);
+            image(playingSong.imageFile, 978, 295, 287, 287);
+            fill(255);
             textAlign(LEFT);
-            textSize(20);
-            text(playingSong.name, 995,560);
+            textSize(18);
+            text(playingSong.name, 1000,620);
+            textSize(12);
+            text(playingSong.artist, 1000, 640);
         }
     }
 }

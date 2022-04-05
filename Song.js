@@ -2,10 +2,11 @@ class Song{
     constructor({
         name,
         artist,
-        genre,
-        date,
-        duration,
-        soundFile
+        genre = '',
+        date = '',
+        duration = '',
+        soundFile,
+        imageFile
     }){
         this._name = name;
         this._artist = artist;
@@ -14,6 +15,7 @@ class Song{
         this._duration = duration;
         this._soundFile = soundFile;
         this._isPlaying = false;
+        this._imageFile = imageFile;
     }
     playSong(){
         this._soundFile.play();
@@ -52,5 +54,8 @@ class Song{
     }
     get isPlaying(){
         return this._isPlaying;
+    }
+    get imageFile(){
+        return this._imageFile;
     }
 }

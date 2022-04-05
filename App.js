@@ -1,8 +1,10 @@
 class App{
     constructor(){
         this._songsFiles = [];
+        this._imageFiles = [];
         this._songs = [];
-        this.loadFileSongs();
+        this.loadSongFiles();
+        this.loadImageFiles();
         this._interface = new Interface();
         this._screen = 1;
         this._playLists = [];
@@ -11,8 +13,18 @@ class App{
         this.createPlayLists();
         this._volumeSlider = 990;
         this._loadingSlider = 280;
+        const input = document.querySelector('#load-song');
+
+        input.addEventListener('change', () => {
+            const url = URL.createObjectURL(input.files[0]);
+            const sound = loadSound(url, () => {
+                const name = window.prompt("Type the song name") || "";
+                const artist = window.prompt("Type the artist song") || "";
+                this._songs.push(new Song({soundFile: sound, name: name, artist: artist}))
+            })
+        })
     }
-    loadFileSongs(){
+    loadSongFiles(){
         this._songsFiles[0] = loadSound('/Songs/Slowdive - When the sun hits.mp3');
         this._songsFiles[1] = loadSound('/Songs/Surf Curse - Freaks.mp3');
         this._songsFiles[2] = loadSound('/Songs/The Drums - Money.mp3');
@@ -29,6 +41,23 @@ class App{
         this._songsFiles[13] = loadSound('/Songs/The Less I Know The Better.mp3');
         this._songsFiles[14] = loadSound('/Songs/High Enough.mp3');
     }
+    loadImageFiles(){
+        this._imageFiles[0] = loadImage('/Images/image1.jpg');
+        this._imageFiles[1] = loadImage('/Images/image2.jpg');
+        this._imageFiles[2] = loadImage('/Images/image3.jpg');
+        this._imageFiles[3] = loadImage('/Images/image4.jpg');
+        this._imageFiles[4] = loadImage('/Images/image5.jpg');
+        this._imageFiles[5] = loadImage('/Images/image6.jpg');
+        this._imageFiles[6] = loadImage('/Images/image7.jpg');
+        this._imageFiles[7] = loadImage('/Images/image8.jpg');
+        this._imageFiles[8] = loadImage('/Images/image9.jpg');
+        this._imageFiles[9] = loadImage('/Images/image10.jpg');
+        this._imageFiles[10] = loadImage('/Images/image11.jpg');
+        this._imageFiles[11] = loadImage('/Images/image12.jpg');
+        this._imageFiles[12] = loadImage('/Images/image13.jpg');
+        this._imageFiles[13] = loadImage('/Images/image14.jpg');
+        this._imageFiles[14] = loadImage('/Images/image15.jpg');
+    }
     songDates(){
         this._songs.push(new Song({
             name: 'When the sun hits',
@@ -36,7 +65,8 @@ class App{
             genre: 'Alternative',
             date: '1993',
             duration: '285',
-            soundFile: this._songsFiles[0]
+            soundFile: this._songsFiles[0],
+            imageFile: this._imageFiles[0]
         }));
         this._songs.push(new Song({
             name: 'Freaks',
@@ -44,7 +74,8 @@ class App{
             genre: 'Alternative',
             date: '2013',
             duration: '147',
-            soundFile: this._songsFiles[1]
+            soundFile: this._songsFiles[1],
+            imageFile: this._imageFiles[1]
         }));
         this._songs.push(new Song({
             name: 'Money',
@@ -52,7 +83,8 @@ class App{
             genre: 'Rock',
             date: '2011',
             duration: '236',
-            soundFile: this._songsFiles[2]
+            soundFile: this._songsFiles[2],
+            imageFile: this._imageFiles[2]
         }));
         this._songs.push(new Song({
             name: 'Fahrradsattel',
@@ -60,7 +92,8 @@ class App{
             genre: 'Rock',
             date: '2021',
             duration: '110',
-            soundFile: this._songsFiles[3]
+            soundFile: this._songsFiles[3],
+            imageFile: this._imageFiles[3]
         }));
         this._songs.push(new Song({
             name: 'Pantysito',
@@ -68,7 +101,8 @@ class App{
             genre: 'Reggaeton',
             date: '2022',
             duration: '237',
-            soundFile: this._songsFiles[4]
+            soundFile: this._songsFiles[4],
+            imageFile: this._imageFiles[4]
         }));
         this._songs.push(new Song({
             name: 'I think I Like It',
@@ -76,7 +110,8 @@ class App{
             genre: 'Electronic',
             date: '2015',
             duration: '335',
-            soundFile: this._songsFiles[5]
+            soundFile: this._songsFiles[5],
+            imageFile: this._imageFiles[5]
         }));
         this._songs.push(new Song({
             name: 'Lady (Hear Me Tonight)',
@@ -84,7 +119,8 @@ class App{
             genre: 'Disco',
             date: '2000',
             duration: '221',
-            soundFile: this._songsFiles[6]
+            soundFile: this._songsFiles[6],
+            imageFile: this._imageFiles[6]
         }));
         this._songs.push(new Song({
             name: 'Chandelier',
@@ -92,7 +128,8 @@ class App{
             genre: 'Alternative/independent',
             date: '2021',
             duration: '129',
-            soundFile: this._songsFiles[7]
+            soundFile: this._songsFiles[7],
+            imageFile: this._imageFiles[7]
         }));
         this._songs.push(new Song({
             name: 'Demasiadas mujeres',
@@ -100,7 +137,8 @@ class App{
             genre: 'Latin Urban, R&B alternative',
             date: '2021',
             duration: '167',
-            soundFile: this._songsFiles[8]
+            soundFile: this._songsFiles[8],
+            imageFile: this._imageFiles[8]
         }));
         this._songs.push(new Song({
             name: 'Jugaste Y Sufrí',
@@ -108,7 +146,8 @@ class App{
             genre: 'Corridos Tumbados',
             date: '2020',
             duration: '275',
-            soundFile: this._songsFiles[9]
+            soundFile: this._songsFiles[9],
+            imageFile: this._imageFiles[9]
         }));
         this._songs.push(new Song({
             name: 'METALLICA',
@@ -116,7 +155,8 @@ class App{
             genre: 'Trap',
             date: '2021',
             duration: '225',
-            soundFile: this._songsFiles[10]
+            soundFile: this._songsFiles[10],
+            imageFile: this._imageFiles[10]
         }));
         this._songs.push(new Song({
             name: 'Softcore',
@@ -124,7 +164,8 @@ class App{
             genre: 'Alternative',
             date: '2018',
             duration: '210',
-            soundFile: this._songsFiles[11]
+            soundFile: this._songsFiles[11],
+            imageFile: this._imageFiles[11]
         }));
         this._songs.push(new Song({
             name: 'Sudno',
@@ -132,7 +173,8 @@ class App{
             genre: 'Post Punk',
             date: '2018',
             duration: '145',
-            soundFile: this._songsFiles[12]
+            soundFile: this._songsFiles[12],
+            imageFile: this._imageFiles[12]
         }));
         this._songs.push(new Song({
             name: 'The Less I know The Better',
@@ -140,7 +182,8 @@ class App{
             genre: 'Alternative',
             date: '2015',
             duration: '227',
-            soundFile: this._songsFiles[13]
+            soundFile: this._songsFiles[13],
+            imageFile: this._imageFiles[13]
         }));
         this._songs.push(new Song({
             name: 'High Enough',
@@ -148,7 +191,8 @@ class App{
             genre: 'Indie Rock',
             date: '2017',
             duration: '290',
-            soundFile: this._songsFiles[14]
+            soundFile: this._songsFiles[14],
+            imageFile: this._imageFiles[14]
         }));
     }
     createPlayLists(){
@@ -197,8 +241,7 @@ class App{
                 for (let index = 0; index < this._songs.length; index++) {
                     const song = this._songs[index];
                     if(song.isPlaying === true){
-                        
-                        console.log(map(mouseX, 0, this._songs[index].soundFile.duration(),280 ,990))
+                        //const loading = map()
                     }
                     circle(this._loadingSlider, 633, 10);
                 }
@@ -320,6 +363,16 @@ class App{
                 }
                 break;
         }
+        if(this._screen === 1,2,3){
+            this.uploadSong(mx, my);
+        }
+    }
+    uploadSong(mx, my){
+        if(mx > 1160 && mx <1160 + 90
+            && my > 110 && my <110 + 30){
+                const input = document.querySelector('#load-song');
+                input.click();
+            }
     }
     isDragged(mx, my, song){
         switch (this._screen) {
