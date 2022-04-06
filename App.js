@@ -235,19 +235,32 @@ class App{
                 this._interface.allPlaylists();
                 break;
             case 4:
-                this._interface.playingSong(this._playingSong);
+                this._interface.playingSong(this._playingSong, this._songs);
                 fill(255)
                 circle(this._volumeSlider, 590, 10);
                 for (let index = 0; index < this._songs.length; index++) {
                     const song = this._songs[index];
                     if(song.isPlaying === true){
-                        //const loading = map()
+                        const loading = map(this._songs[index].soundFile.currentTime(), 0, this._songs[index].soundFile.duration(), 280, 990);
+                        this._loadingSlider = loading;
+                        circle(this._loadingSlider, 633, 10);
                     }
-                    circle(this._loadingSlider, 633, 10);
                 }
                 break;
+        }//if(cancion.currentTime() == cancion.duration())
+        this._interface.songWindow(this._playingSong, this._screen, this._songs);
+        for (let index = 0; index < this._songs.length; index++) {
+            const song = this._songs[index];
+            if(song.soundFile.isPlaying()){
+                if(this._songs[index].soundFile.currentTime() > this._songs[index].soundFile.duration() - 1){
+                    this._songs[index].stopSong();
+                    index += 1;
+                    this._songs[index].playSong();
+                    this._playingSong = this._songs[index];
+                }
+                
+            }
         }
-        this._interface.songWindow(this._playingSong, this._screen);
     }
     /*playing(){
         if(this._playingSong !== null){

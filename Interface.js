@@ -15,7 +15,12 @@ class Interface{
         this._boxes[0] = loadImage('/Images/SongFrame.png');
         this._boxes[1] = loadImage('/Images/PlayListFrame.png');
         this._boxes[10] = loadImage('/Images/windowSong.jpg');
-        this._buttons[0] = loadImage('/Images/PlayButton.png')
+        this._boxes[20] = loadImage('/Images/HomeSong1.png');
+        this._boxes[21] = loadImage('/Images/HomeSong2.png');
+        this._boxes[22] = loadImage('/Images/HomeSong3.png');
+        this._boxes[23] = loadImage('/Images/HomeSong4.png');
+        this._buttons[0] = loadImage('/Images/PlayButton.png');
+        this._buttons[1] = loadImage('/Images/PauseButton.png');
     }
     welcome(){
         image(this._Backgrounds[0], 0, 0);
@@ -41,7 +46,8 @@ class Interface{
                 //Boton reproducir canciones
                 noStroke();
                 fill(150);
-                image(this._buttons[0], 200 + index * 220, 340)
+                image(this._buttons[0], 200 + index * 220, 340);
+                image(this._boxes[index + 20], 55 + 220 * index, 173);
             }
         }
         for (let index = 0; index < playListArray.length; index++) {
@@ -86,7 +92,7 @@ class Interface{
     allPlaylists(){
         image(this._Backgrounds[3], 0, 0);
     }
-    playingSong(song){
+    playingSong(song, arraySong){
         image(this._Backgrounds[4], 0, 0);
 
         //Textos
@@ -102,8 +108,16 @@ class Interface{
         fill(0, 80);
         rect(70, 50, 40, 30);
         image(song.imageFile, 454, 53);
+        for (let index = 0; index < arraySong.length; index++) {
+            const song = arraySong[index];
+            if(song.soundFile.isPaused() && song.isPlaying === true){
+                image(this._buttons[0], 615, 563, 53, 53);
+            } else if(song.soundFile.isPlaying()){
+                image(this._buttons[1], 615, 563, 53, 53);
+            }
+        }
     }
-    songWindow(playingSong, screen){
+    songWindow(playingSong, screen, arraySong){
         if(playingSong !== null && screen !== 0 && screen !== 4){
             image(this._boxes[10], 978, 295);
             image(playingSong.imageFile, 978, 295, 287, 287);
@@ -113,6 +127,14 @@ class Interface{
             text(playingSong.name, 1000,620);
             textSize(12);
             text(playingSong.artist, 1000, 640);
+            for (let index = 0; index < arraySong.length; index++) {
+                const song = arraySong[index];
+                if(song.soundFile.isPaused() && song.isPlaying === true){
+                    image(this._buttons[0], 1100, 650, 42, 42);
+                } else if(song.soundFile.isPlaying()){
+                    image(this._buttons[1], 1100, 650, 42, 42);
+                }
+            }
         }
     }
 }
