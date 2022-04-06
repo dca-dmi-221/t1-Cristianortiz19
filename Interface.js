@@ -4,6 +4,7 @@ class Interface{
         this._boxes = [];
         this._buttons = [];
         this._songImages = [];
+        this._fonts = [];
         this.preloadImages();
     }
     preloadImages(){
@@ -14,13 +15,21 @@ class Interface{
         this._Backgrounds[4] = loadImage('/Images/IsPlaying.jpg');
         this._boxes[0] = loadImage('/Images/SongFrame.png');
         this._boxes[1] = loadImage('/Images/PlayListFrame.png');
+        this._boxes[2] = loadImage('/Images/AllSongsFrame.png');
         this._boxes[10] = loadImage('/Images/windowSong.jpg');
         this._boxes[20] = loadImage('/Images/HomeSong1.png');
         this._boxes[21] = loadImage('/Images/HomeSong2.png');
         this._boxes[22] = loadImage('/Images/HomeSong3.png');
         this._boxes[23] = loadImage('/Images/HomeSong4.png');
+        this._boxes[30] = loadImage('/Images/HomePlayList1.png');
+        this._boxes[31] = loadImage('/Images/HomePlayList2.png');
+        this._boxes[32] = loadImage('/Images/HomePlayList3.png');
         this._buttons[0] = loadImage('/Images/PlayButton.png');
         this._buttons[1] = loadImage('/Images/PauseButton.png');
+        this._fonts[0] = loadFont('/Fonts/Poppins-Bold.ttf');
+        this._fonts[1] = loadFont('/Fonts/Poppins-Regular.ttf');
+        this._fonts[2] = loadFont('/Fonts/sf-ui-display-bold.otf');
+        this._fonts[3] = loadFont('/Fonts/sf-ui-display-light.otf');
     }
     welcome(){
         image(this._Backgrounds[0], 0, 0);
@@ -35,11 +44,14 @@ class Interface{
                 // Info canciones
                 textAlign(LEFT);
                 fill(255);
+                textFont(this._fonts[0]);
                 textSize(18);
                 text(song.name, 70 + index * 220, 320);
+                textFont(this._fonts[1]);
                 textSize(14);
                 text(song.artist, 70 + index * 220, 340);
                 fill(255);
+                textFont(this._fonts[3]);
                 textSize(14);
                 text(song.genre, 70 + index * 220, 380);
 
@@ -57,13 +69,14 @@ class Interface{
                 //info playlists
                 textAlign(LEFT);
                 fill(255);
+                textFont(this._fonts[0]);
                 textSize(18);
                 text(playList.name, 70 + index * 220, 630);
+                image(this._buttons[0], 200 + index * 220, 650);
+
+                image(this._boxes[index + 30], 55 + 220 * index, 480);
             }
         }
-    }
-    playing(){
-
     }
     allSongs(songArray){
         image(this._Backgrounds[2], 0, 0);
@@ -106,7 +119,6 @@ class Interface{
         text(song.artist, 640, 530);
 
         fill(0, 80);
-        rect(70, 50, 40, 30);
         image(song.imageFile, 454, 53);
         for (let index = 0; index < arraySong.length; index++) {
             const song = arraySong[index];
