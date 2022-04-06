@@ -26,6 +26,8 @@ class Interface{
         this._boxes[32] = loadImage('/Images/HomePlayList3.png');
         this._buttons[0] = loadImage('/Images/PlayButton.png');
         this._buttons[1] = loadImage('/Images/PauseButton.png');
+        this._buttons[2] = loadImage('/Images/NextSong.png');
+        this._buttons[3] = loadImage('/Images/PreviousSong.png');
         this._fonts[0] = loadFont('/Fonts/Poppins-Bold.ttf');
         this._fonts[1] = loadFont('/Fonts/Poppins-Regular.ttf');
         this._fonts[2] = loadFont('/Fonts/sf-ui-display-bold.otf');
@@ -86,15 +88,18 @@ class Interface{
         for (let index = 0; index < songArray.length; index++) {
             const song = songArray[index];
             textAlign(LEFT);
+            image(this._boxes[2], x - 22, y - 30);
             textSize(16);
+            textFont(this._fonts[0]);
             fill(255);
-            text(song.name, x, y);
+            text(song.name, x, y + 5);
             fill(255);
-            textSize(14)
-            text(song.artist, x, y + 16);
+            textSize(13);
+            textFont(this._fonts[1]);
+            text(song.artist, x, y + 24);
             noStroke();
             fill(100);
-            circle(x + 242, y + 14, 35);
+            image(this._buttons[0], x + 225, y - 3, 34, 34);
             x += 303;
             if(x > 800){
                 x = 50;
@@ -102,20 +107,39 @@ class Interface{
             }
         }
     }
-    allPlaylists(){
+    allPlaylists(playListArray){
         image(this._Backgrounds[3], 0, 0);
+        let x = 50;
+        let y = 120;
+        for (let index = 0; index < playListArray.length; index++) {
+            const playList = playListArray[index];
+            textAlign(LEFT);
+            image(this._boxes[2], x - 22, y - 30);
+            textSize(16);
+            textFont(this._fonts[0]);
+            fill(255);
+            text(playList.name, x, y + 5);
+            image(this._buttons[0], x + 225, y - 3, 34, 34);
+            x += 303;
+            if(x > 800){
+                x = 50;
+                y += 85;
+            }
+        }
     }
     playingSong(song, arraySong){
         image(this._Backgrounds[4], 0, 0);
 
         //Textos
-        fill(0);
+        fill(255);
         textAlign(CENTER);
+        textFont(this._fonts[0])
         textSize(40);
         text(song.name, 640,500);
 
         textSize(20);
-        fill(80);
+        fill(114, 204, 255);
+        textFont(this._fonts[3]);
         text(song.artist, 640, 530);
 
         fill(0, 80);
@@ -128,6 +152,8 @@ class Interface{
                 image(this._buttons[1], 615, 563, 53, 53);
             }
         }
+        image(this._buttons[2], 694, 579);
+        image(this._buttons[3], 551, 579);
     }
     songWindow(playingSong, screen, arraySong){
         if(playingSong !== null && screen !== 0 && screen !== 4){
@@ -147,6 +173,8 @@ class Interface{
                     image(this._buttons[1], 1100, 650, 42, 42);
                 }
             }
+            image(this._buttons[2], 1168, 656);
+            image(this._buttons[3], 1035, 656);
         }
     }
 }
