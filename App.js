@@ -6,7 +6,7 @@ class App{
         this.loadSongFiles();
         this.loadImageFiles();
         this._interface = new Interface();
-        this._screen = 3;
+        this._screen = 0;
         this._playLists = [];
         this.songDates();
         this._playingSong = null;
@@ -336,6 +336,21 @@ class App{
                     }
                 break;
             case 3:
+                let x1 = 50;
+                let y1 = 120
+                for (let index = 0; index < this._playLists.length; index++) {
+                    if(dist(mx, my, x1 + 242, y1 + 14) < 35){
+                        this._playLists[index].sounds[0].playSong();
+                        this._playingSong = this._playLists[index].sounds[0]
+                        this._screen = 4;
+                        console.log(this._playLists[index])
+                    }
+                    x1 += 303;
+                    if(x1 > 800){
+                        x1 = 50;
+                        y1 += 85;
+                    }
+                }
                 //Volver
                 if(mx > 30 && mx < 30 + 40 &&
                     my > 40 && my < 40 + 30){
