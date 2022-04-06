@@ -19,6 +19,7 @@ class Song{
     }
     playSong(){
         this._soundFile.play();
+        loop();
         this._isPlaying = true;
     }
     stopSong(){
@@ -30,6 +31,7 @@ class Song{
     pauseSong(){
         if(this._soundFile.isPlaying()){
             this._soundFile.pause();
+            noLoop();
         }else{
             this.playSong();
         }

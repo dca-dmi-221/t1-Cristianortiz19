@@ -7,6 +7,7 @@ class Interface{
         this._fonts = [];
         this.preloadImages();
         this.fft = new p5.FFT();
+        this.particles = [];
     }
     preloadImages(){
         this._Backgrounds[0] = loadImage('/Images/Welcome.jpg');
@@ -132,15 +133,28 @@ class Interface{
         image(this._Backgrounds[4], 0, 0);
 
         stroke(255, 68, 231);
+        strokeWeight(2);
+        noFill();
         let wave = this.fft.waveform();
-        for (let i = 0; i < width; i++) {
+        beginShape();
+        for (let i = 0; i < width; i += 3) {
             let index = floor(map(i, 0, width, 0, wave.length))
 
             let x = i;
-            let y = wave[index] * 300 + height / 2
-            point(x, y);
+            let y = wave[index] * 200 + height / 2
+            vertex(x, y);
+        }
+        endShape();
+
+        let particle = new Particle();
+        this.particles.push(particle);
+
+        for (let index = 0; index < this.particles.length; index++) {
+            this.particles[index].update();
+            this.particles[index].show();
         }
 
+        noStroke();
         //Textos
         fill(255);
         textAlign(CENTER);
@@ -189,5 +203,24 @@ class Interface{
             image(this._buttons[2], 1168, 656);
             image(this._buttons[3], 1035, 656);
         }
+    }
+}
+
+class Particle {
+    constructor(){
+        this.pos = p5.Vector.random2D().set(random(0,1280))
+        this.vel = createVector(0, 0);
+        this.acc = this.pos.copy().set(random(-0.01, 0.01), random(-0.01, 0.01));
+
+        this.w = random(1, 4);
+    }
+    update(){
+        this.vel.add(this.acc);
+        this.pos.add(this.vel);
+    }
+    show(){
+        noStroke();
+        fill(255, 68, 231)
+        ellipse(this.pos.x, this.pos.y + 360, this.w);
     }
 }
