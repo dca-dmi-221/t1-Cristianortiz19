@@ -303,6 +303,19 @@ class App{
                         }
                     }
                 }
+                for (let index = 0; index < this._playLists.length; index++) {
+                    const playlist = this._playLists[index];
+                    if(index < 4){
+                        let xItem = 220 + (index * 220);
+                        let yItem = 670;
+                        let sizeItem = 40;
+                        if(dist(mx, my, xItem, yItem)<sizeItem/2){
+                            playlist.sounds[0].playSong();
+                            this._playingSong = playlist.sounds[0];
+                            this._screen = 4;
+                        }
+                    }
+                }
                 console.log(this._playingSong);
                 if(mx > 845 && mx <845 + 80
                     && my > 135 && my <135 + 25){
