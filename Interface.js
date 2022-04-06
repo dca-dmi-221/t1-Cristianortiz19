@@ -135,6 +135,10 @@ class Interface{
         stroke(255, 68, 231);
         strokeWeight(2);
         noFill();
+
+        this.fft.analyze();
+        this.amp = this.fft.getEnergy(20, 200)
+
         let wave = this.fft.waveform();
         beginShape();
         for (let i = 0; i < width; i += 3) {
@@ -150,8 +154,13 @@ class Interface{
         this.particles.push(particle);
 
         for (let index = 0; index < this.particles.length; index++) {
-            this.particles[index].update();
+            if(!this.particles[index].edges()){
+                this.particles[index].update(this.amp > 230);
             this.particles[index].show();
+            } else {
+                this.particles.splice(index, 1);
+            }
+            
         }
 
         noStroke();
@@ -213,14 +222,32 @@ class Particle {
         this.acc = this.pos.copy().set(random(-0.01, 0.01), random(-0.01, 0.01));
 
         this.w = random(1, 4);
+        this.color= parseInt(random(0,2));
     }
-    update(){
+    update(cond){
         this.vel.add(this.acc);
         this.pos.add(this.vel);
+        if(cond){
+            this.pos.add(this.vel);
+            this.pos.add(this.vel);
+            this.pos.add(this.vel);
+        }
+    }
+    edges(){
+        if(this.pos.x < -width /2 || this.pos.x > width ||
+        this.pos.y < -height /2 || this.pos.y > height / 2){
+            return true;
+        } else {
+            return false;
+        }
     }
     show(){
         noStroke();
-        fill(255, 68, 231)
+        if(this.color == 1){
+            fill(255, 68, 231)
+        } else {
+            fill(55, 231, 255)
+        }
         ellipse(this.pos.x, this.pos.y + 360, this.w);
     }
 }
