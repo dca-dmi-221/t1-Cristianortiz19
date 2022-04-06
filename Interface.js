@@ -6,6 +6,7 @@ class Interface{
         this._songImages = [];
         this._fonts = [];
         this.preloadImages();
+        this.fft = new p5.FFT();
     }
     preloadImages(){
         this._Backgrounds[0] = loadImage('/Images/Welcome.jpg');
@@ -130,6 +131,16 @@ class Interface{
     playingSong(song, arraySong){
         image(this._Backgrounds[4], 0, 0);
 
+        stroke(255, 68, 231);
+        let wave = this.fft.waveform();
+        for (let i = 0; i < width; i++) {
+            let index = floor(map(i, 0, width, 0, wave.length))
+
+            let x = i;
+            let y = wave[index] * 300 + height / 2
+            point(x, y);
+        }
+
         //Textos
         fill(255);
         textAlign(CENTER);
@@ -154,6 +165,8 @@ class Interface{
         }
         image(this._buttons[2], 694, 579);
         image(this._buttons[3], 551, 579);
+
+        
     }
     songWindow(playingSong, screen, arraySong){
         if(playingSong !== null && screen !== 0 && screen !== 4){
