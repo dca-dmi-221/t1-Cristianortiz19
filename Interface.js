@@ -155,7 +155,7 @@ class Interface{
 
         for (let index = 0; index < this.particles.length; index++) {
             if(!this.particles[index].edges()){
-                this.particles[index].update(this.amp > 230);
+                this.particles[index].update(this.amp > 220);
             this.particles[index].show();
             } else {
                 this.particles.splice(index, 1);
