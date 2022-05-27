@@ -25,38 +25,38 @@ class App{
         })
     }
     loadSongFiles(){
-        this._songsFiles[0] = loadSound('/Songs/Slowdive - When the sun hits.mp3');
-        this._songsFiles[1] = loadSound('/Songs/Surf Curse - Freaks.mp3');
-        this._songsFiles[2] = loadSound('/Songs/The Drums - Money.mp3');
-        this._songsFiles[3] = loadSound('/Songs/Fahrradsattel.mp3');
-        this._songsFiles[4] = loadSound('/Songs/Pantysito.mp3');
-        this._songsFiles[5] = loadSound('/Songs/I Think I Like It.mp3');
-        this._songsFiles[6] = loadSound('/Songs/Lady.mp3');
-        this._songsFiles[7] = loadSound('/Songs/Chandelier.mp3');
-        this._songsFiles[8] = loadSound('/Songs/Demasiadas Mujeres.mp3');
-        this._songsFiles[9] = loadSound('/Songs/Jugaste y Sufri.mp3');
-        this._songsFiles[10] = loadSound('/Songs/METALLICA.mp3');
-        this._songsFiles[11] = loadSound('/Songs/Softcore.mp3');
-        this._songsFiles[12] = loadSound('/Songs/Sudno.mp3');
-        this._songsFiles[13] = loadSound('/Songs/The Less I Know The Better.mp3');
-        this._songsFiles[14] = loadSound('/Songs/High Enough.mp3');
+        this._songsFiles[0] = loadSound('./Songs/Slowdive - When the Sun Hits.mp3');
+        this._songsFiles[1] = loadSound('./Songs/Surf Curse - Freaks.mp3');
+        this._songsFiles[2] = loadSound('./Songs/The Drums - Money.mp3');
+        this._songsFiles[3] = loadSound('./Songs/Fahrradsattel.mp3');
+        this._songsFiles[4] = loadSound('./Songs/Pantysito.mp3');
+        this._songsFiles[5] = loadSound('./Songs/I Think I Like It.mp3');
+        this._songsFiles[6] = loadSound('./Songs/Lady.mp3');
+        this._songsFiles[7] = loadSound('./Songs/Chandelier.mp3');
+        this._songsFiles[8] = loadSound('./Songs/Demasiadas Mujeres.mp3');
+        this._songsFiles[9] = loadSound('./Songs/Jugaste y Sufri.mp3');
+        this._songsFiles[10] = loadSound('./Songs/METALLICA.mp3');
+        this._songsFiles[11] = loadSound('./Songs/Softcore.mp3');
+        this._songsFiles[12] = loadSound('./Songs/Sudno.mp3');
+        this._songsFiles[13] = loadSound('./Songs/The Less I Know The Better.mp3');
+        this._songsFiles[14] = loadSound('./Songs/High Enough.mp3');
     }
     loadImageFiles(){
-        this._imageFiles[0] = loadImage('/Images/image1.jpg');
-        this._imageFiles[1] = loadImage('/Images/image2.jpg');
-        this._imageFiles[2] = loadImage('/Images/image3.jpg');
-        this._imageFiles[3] = loadImage('/Images/image4.jpg');
-        this._imageFiles[4] = loadImage('/Images/image5.jpg');
-        this._imageFiles[5] = loadImage('/Images/image6.jpg');
-        this._imageFiles[6] = loadImage('/Images/image7.jpg');
-        this._imageFiles[7] = loadImage('/Images/image8.jpg');
-        this._imageFiles[8] = loadImage('/Images/image9.jpg');
-        this._imageFiles[9] = loadImage('/Images/image10.jpg');
-        this._imageFiles[10] = loadImage('/Images/image11.jpg');
-        this._imageFiles[11] = loadImage('/Images/image12.jpg');
-        this._imageFiles[12] = loadImage('/Images/image13.jpg');
-        this._imageFiles[13] = loadImage('/Images/image14.jpg');
-        this._imageFiles[14] = loadImage('/Images/image15.jpg');
+        this._imageFiles[0] = loadImage('./Images/Image1.jpg');
+        this._imageFiles[1] = loadImage('./Images/image2.jpg');
+        this._imageFiles[2] = loadImage('./Images/image3.jpg');
+        this._imageFiles[3] = loadImage('./Images/image4.jpg');
+        this._imageFiles[4] = loadImage('./Images/image5.jpg');
+        this._imageFiles[5] = loadImage('./Images/image6.jpg');
+        this._imageFiles[6] = loadImage('./Images/image7.jpg');
+        this._imageFiles[7] = loadImage('./Images/image8.jpg');
+        this._imageFiles[8] = loadImage('./Images/image9.jpg');
+        this._imageFiles[9] = loadImage('./Images/image10.jpg');
+        this._imageFiles[10] = loadImage('./Images/image11.jpg');
+        this._imageFiles[11] = loadImage('./Images/image12.jpg');
+        this._imageFiles[12] = loadImage('./Images/image13.jpg');
+        this._imageFiles[13] = loadImage('./Images/image14.jpg');
+        this._imageFiles[14] = loadImage('./Images/image15.jpg');
     }
     songDates(){
         this._songs.push(new Song({
